@@ -1,0 +1,27 @@
+<div class="popup-overlay">
+  <form [formGroup]="formGroup" (submit)="submitForm()">
+    <div class="popup-content">
+      <div class="openBlackBoxContent">
+        <h4>Otwórz BlackBoxa</h4>
+        <p>Dane potrzebne do otwarcia: </p>
+        <label for="orderId">Id zamówienia</label>
+        <input type="text" id="orderId" formControlName="id" [value]="openBlackBoxRequest.id" (input)="openBlackBoxRequest.id = $any($event.target).value" required >
+        <div *ngIf="orderIdControl?.invalid && orderIdControl?.touched">
+          <p class="error-message">Id zamówiania jest wymagane.</p>
+        </div>
+        <br>
+        <label for="orderId">Kod otwarcia</label>
+        <input type="text" id="openCode" formControlName="openCode" [value]="openBlackBoxRequest.openCode" (input)="openBlackBoxRequest.openCode = $any($event.target).value" required >
+        <div *ngIf="openCodeControl?.invalid && openCodeControl?.touched">
+          <p class="error-message">Nieprawidłowy format kodu otwarcia, <br> kod otwarcia powinien być 6-cyfrową liczbą.</p>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="buttons">
+        <button type="submit">Otwórz BlackBoxa</button>
+        <button type="button" (click)="closeForm()">Zamknij</button>
+      </div>
+    </div>
+  </form>
+</div>

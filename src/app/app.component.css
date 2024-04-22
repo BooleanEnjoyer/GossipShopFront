@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.appLayout{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+}
+
+.onlyRouterContent{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+footer ul li a{
+  color:#FFFFFF
+}
+
+footer ul li{
+  display:inline-block;
+  font-size:14px;
+  padding:10px 20px
+}
+
+.mainContainer {
+  flex: 1;
+}
+
+.footerStyle {
+  background-color: #14AE5C;
+  /*padding: 20px;*/
+  color: #FFFFFF;
+  text-align: center;
+  width: 100%;
+  font-size: large;
+  font-weight: bolder;
+  font-family: Italic, sans-serif;
+}
+

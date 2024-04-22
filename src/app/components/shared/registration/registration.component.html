@@ -1,0 +1,101 @@
+<div class="register">
+  <div class="back">
+    <button type="button" (click)="closeForm()" class="back-button">
+      <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="arrow-img"/>
+    </button>
+  </div>
+  <div class="downContent">
+    <div class="formContent">
+      <form [formGroup]="formGroup" (submit)="submitForm()" class="formFields">
+        <div class="fieldsLayout">
+          <div class="fields">
+            <div class="addressField">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" formControlName="firstName" class="input-text"[value]="registrationRequest.firstName"
+                     (input)="registrationRequest.firstName = $any($event.target).value" required>
+            </div>
+            <div *ngIf="firstNameControl('firstName')?.invalid && firstNameControl('firstName')?.touched">
+              <p class="error-message">Imię nadawcy jest wymagane.</p>
+            </div>
+            <div class="addressField">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" formControlName="lastName" class="input-text" [value]="registrationRequest.lastName"
+                     (input)="registrationRequest.lastName = $any($event.target).value" required>
+            </div>
+            <div *ngIf="lastNameControl('lastName')?.invalid && lastNameControl('lastName')?.touched">
+              <p class="error-message">Nazwisko nadawcy jest wymagane</p>
+            </div>
+            <div class="addressField">
+              <label for="email">Email</label>
+              <input type="email" id="email" formControlName="email" class="input-text" [value]="registrationRequest.email"
+                     (input)="registrationRequest.email = $any($event.target).value" required>
+            </div>
+            <div *ngIf="emailControl('email')?.invalid && emailControl('email')?.touched">
+              <p class="error-message">Email jest wymagany.</p>
+            </div>
+            <div class="addressField">
+              <label for="phoneNumber">Phone number</label>
+              <input type="number" id="phoneNumber" formControlName="phoneNumber" class="input-text"
+                     [value]="registrationRequest.phone"
+                     (input)="registrationRequest.phone =$any($event.target).valueAsNumber" required>
+            </div>
+            <div *ngIf="phoneNumberCodeControl('phoneNumber')?.invalid && phoneNumberCodeControl('phoneNumber')?.touched">
+              <p class="error-message">Numer telefonu nadawcy jest wymagany.</p>
+            </div>
+            <div class="addressField">
+              <label for="password">Password</label>
+              <input type="password" id="password" formControlName="password" class="input-text"
+                     [value]="registrationRequest.password"
+                     (input)="registrationRequest.password =$any($event.target).value" required>
+            </div>
+            <div *ngIf="passwordControl('password')?.invalid && passwordControl('password')?.touched">
+              <p class="error-message">Hasło musi mieć conajmniej 8 znaków<br>oraz znak specjalny, literę i numer.
+              </p>
+            </div>
+            <!--          TODO dodać powtórz hasło i walidacje do tego -->
+                <div class="addressField">
+                  <label for="city">City</label>
+                  <input type="text" id="city" formControlName="city" class="input-text"
+                         [value]="registrationRequest.address.city"
+                         (input)="registrationRequest.address.city = $any($event.target).value" required>
+                </div>
+                <div *ngIf="cityControl('city')?.invalid && cityControl('city')?.touched">
+                  <p class="error-message">Docelowe miasto jest wymagane.</p>
+                </div>
+                <div class="addressField">
+                  <label for="street">Street</label>
+                  <input type="text" id="street" formControlName="street" class="input-text" [value]="registrationRequest.address.street"
+                         (input)="registrationRequest.address.street = $any($event.target).value" required>
+                </div>
+                <div *ngIf="streetControl('street')?.invalid && streetControl('street')?.touched">
+                  <p class="error-message">Docelowa ulica jest wymagana.</p>
+                </div>
+                <div class="addressField">
+                  <label for="houseNumber">House number</label>
+                  <input type="number" id="houseNumber" formControlName="houseNumber" class="input-text"
+                         [value]="registrationRequest.address.houseNumber"
+                         (input)="registrationRequest.address.houseNumber = $any($event.target).value" required>
+                </div>
+                <div
+                  *ngIf="houseNumberControl('houseNumber')?.invalid && houseNumberControl('houseNumber')?.touched">
+                  <p class="error-message">Docelowy numer domu jest wymagany.</p>
+                </div>
+                <div class="addressField">
+                  <label for="zipCode">Zip code</label>
+                  <input type="text" id="zipCode" formControlName="zipCode" class="input-text"
+                         [value]="registrationRequest.address.zipCode"
+                         (input)="registrationRequest.address.zipCode =$any($event.target).value" required>
+                </div>
+                <div *ngIf="zipCodeControl('zipCode')?.invalid && zipCodeControl('zipCode')?.touched">
+                  <p class="error-message">Docelowy kod pocztowy jest <br> wymagany w poprawnym formacie.</p>
+                </div>
+                <div class="sign-up-button-block">
+                  <button type="submit" class="sign-up-button">Sign up</button>
+                </div>
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+

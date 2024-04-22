@@ -1,0 +1,34 @@
+<header>
+  <div class="upperContent">
+    <div class="navigationHolder">
+      <div class="menu" (click)="togglePanel()">
+        <div>
+          <img *ngIf="!isOpened()" src="/assets/Burger.png" alt="burger" class="header-shopping-carts"/>
+          <img *ngIf="isOpened()" src="/assets/interface_close-delete-cross-clear-b-a.svg" alt="cross" class="header-shopping-carts"/>
+          <app-navigation [@slideInOut]="{ value: menuState, params: { navHeight: getNavHeight() } }" class="navigation"></app-navigation>
+        </div>
+      </div>
+    </div>
+    <div class="upperContent">
+      <div>
+        <img src="/assets/V4.png" alt="logo" class="header-logo"/>
+      </div>
+      <div>
+        <img src="/assets/finance_shopping-cart-grocery-store-b-s.svg" alt="shopping cart" class="header-shopping-carts"/>
+      </div>
+    </div>
+
+    <div class="authentication">
+      <div *ngIf="!isLoggedIn()">
+        <button type="button" (click)="login()" class="buttonsbackgound">
+          <img src="/assets/LoginIcon.png" alt="login" class="header-login-icon"/>
+        </button>
+      </div>
+      <div *ngIf="isLoggedIn()">
+        <button type="button" (click)="logout()" class="buttonsbackgound">
+          <img src="/assets/AlreadyLoginIcon.png" alt="alreadylog" class="header-login-icon"/>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

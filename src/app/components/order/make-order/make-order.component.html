@@ -1,0 +1,187 @@
+<div class="makeOrderContent">
+  <h4>Dodaj zamówienie</h4>
+  <p>BlackBoxy do wybrania</p>
+  <div class="searchingContent">
+    <div class="sort">
+      <label for="sortSelect">Posortuj po:</label>
+      <select id="sortSelect" [(ngModel)]="selectedSortOption" (change)="changePage(0)">
+        <option value="none">Brak</option>
+        <option value="currentPickupAddress">Adresie</option>
+        <option value="status">Statusie</option>
+        <option value="size">Rozmiarze</option>
+      </select>
+      <div class="sort-order">
+        <label for="sortOrderSelect"></label>
+        <select id="sortOrderSelect" [(ngModel)]="selectedSortOrder" (change)="changePage(0)">
+          <option value="asc">Rosnąco</option>
+          <option value="desc">Malejąco</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <div class="page-item" [class.disabled]="currentPage === 0">
+      <button class="page-link" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">Poprzednia</button>
+    </div>
+    <div class="page-item">
+      <button class="page-link">{{ currentPage + 1 }}</button>
+    </div>
+    <div class="page-item" [class.disabled]="currentPage > totalPages - 2">
+      <button class="page-link" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
+        Następna
+      </button>
+    </div>
+  </div>
+
+  <form [formGroup]="formGroup" (submit)="submitForm()">
+    <div class="formContent">
+      <div class="fields">
+        <p>Docelowy adres: </p>
+        <div class="address">
+          <div>
+            <div class="addressField">
+              <label for="targetCity">Miasto:</label>
+              <input type="text" id="targetCity" formControlName="targetCity" [value]="order.targetAddress.city"
+                     (input)="order.targetAddress.city = $any($event.target).value" required>
+            </div>
+            <div *ngIf="cityControl('targetCity')?.invalid && cityControl('targetCity')?.touched">
+              <p class="error-message">Docelowe miasto jest wymagane.</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="targetStreet">Ulica:</label>
+              <input type="text" id="targetStreet" formControlName="targetStreet" [value]="order.targetAddress.street"
+                     (input)="order.targetAddress.street = $any($event.target).value" required>
+            </div>
+            <div *ngIf="streetControl('targetStreet')?.invalid && streetControl('targetStreet')?.touched">
+              <p class="error-message">Docelowa ulica jest wymagana.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="addressField">
+              <label for="targetHouseNumber">Number domu:</label>
+              <input type="number" id="targetHouseNumber" formControlName="targetHouseNumber"
+                     [value]="order.targetAddress.houseNumber"
+                     (input)="order.targetAddress.houseNumber = $any($event.target).value" required>
+            </div>
+            <div *ngIf="houseNumberControl('targetHouseNumber')?.invalid && houseNumberControl('targetHouseNumber')?.touched">
+              <p class="error-message">Docelowy numer domu jest wymagany.</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="targetZipCode">Kod pocztowy:</label>
+              <input type="text" id="targetZipCode" formControlName="targetZipCode" [value]="order.targetAddress.zipCode"
+                     (input)="order.targetAddress.zipCode =$any($event.target).value" required>
+            </div>
+            <div *ngIf="zipCodeControl('targetZipCode')?.invalid && zipCodeControl('targetZipCode')?.touched">
+              <p class="error-message">Docelowy kod pocztowy jest <br> wymagany w poprawnym formacie.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Nadawca: </p>
+        <div class="address">
+          <div>
+            <div class="addressField">
+              <label for="senderFirstName">Imię:</label>
+              <input type="text" id="senderFirstName" formControlName="firstName" [value]="order.sender.firstName"
+                     (input)="order.sender.firstName = $any($event.target).value" required>
+            </div>
+            <div *ngIf="firstNameControl('firstName')?.invalid && firstNameControl('firstName')?.touched">
+              <p class="error-message">Imię nadawcy jest wymagane.</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="senderLastName">Nazwisko:</label>
+              <input type="text" id="senderLastName" formControlName="lastName" [value]="order.sender.lastName"
+                     (input)="order.sender.lastName = $any($event.target).value" required>
+            </div>
+            <div *ngIf="lastNameControl('lastName')?.invalid && lastNameControl('lastName')?.touched">
+              <p class="error-message">Nazwisko nadawcy jest wymagane</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="addressField">
+              <label for="senderEmail">Email:</label>
+              <input type="email" id="senderEmail" formControlName="email"
+                     [value]="order.sender.email"
+                     (input)="order.sender.email = $any($event.target).value" required>
+            </div>
+            <div *ngIf="emailControl('email')?.invalid && emailControl('email')?.touched">
+              <p class="error-message">Email nadawcy jest wymagany.</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="senderPhone">Number telefonu:</label>
+              <input type="number" id="senderPhone" formControlName="phoneNumber" [value]="order.sender.phone"
+                     (input)="order.sender.phone =$any($event.target).valueAsNumber" required>
+            </div>
+            <div *ngIf="phoneNumberCodeControl('phoneNumber')?.invalid && phoneNumberCodeControl('phoneNumber')?.touched">
+              <p class="error-message">Numer telefonu nadawcy jest wymagany.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Odbiorca: </p>
+        <div class="address">
+          <div>
+            <div class="addressField">
+              <label for="recipientFirstName">Imię:</label>
+              <input type="text" id="recipientFirstName" formControlName="recipientFirstName" [value]="order.recipient.firstName"
+                     (input)="order.recipient.firstName = $any($event.target).value" required>
+            </div>
+            <div *ngIf="firstNameControl('recipientFirstName')?.invalid && firstNameControl('recipientFirstName')?.touched">
+              <p class="error-message">Imię odbiorcy jest wymagane.</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="recipientLastName">Nazwisko:</label>
+              <input type="text" id="recipientLastName" formControlName="recipientLastName" [value]="order.recipient.lastName"
+                     (input)="order.recipient.lastName = $any($event.target).value" required>
+            </div>
+            <div *ngIf="lastNameControl('recipientLastName')?.invalid && lastNameControl('recipientLastName')?.touched">
+              <p class="error-message">Nazwisko odbiorcy jest wymagane</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="recipientEmail">Email:</label>
+              <input type="email" id="recipientEmail" formControlName="recipientEmail"
+                     [value]="order.recipient.email"
+                     (input)="order.recipient.email = $any($event.target).value" required>
+            </div>
+            <div *ngIf="emailControl('recipientEmail')?.invalid && emailControl('recipientEmail')?.touched">
+              <p class="error-message">Email odbiorcy jest wymagany.</p>
+            </div>
+          </div>
+          <div>
+            <div class="addressField">
+              <label for="recipientPhone">Number telefonu:</label>
+              <input type="number" id="recipientPhone" formControlName="recipientPhoneNumber" [value]="order.recipient.phone"
+                     (input)="order.recipient.phone =$any($event.target).valueAsNumber" required>
+            </div>
+            <div class="error-message" *ngIf="phoneNumberCodeControl('recipientPhoneNumber')?.invalid
+            && phoneNumberCodeControl('recipientPhoneNumber')?.touched">
+              <p>Numer telefonu odbiorcy jest wymagany.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="addButtons">
+        <button type="submit">Dodaj</button>
+        <button type="button" (click)="closeForm()">Anuluj</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+

@@ -1,0 +1,26 @@
+<div class="popup-overlay">
+  <div class="popup-content">
+    <h2>Detale zamówienia</h2>
+    <p>Id: {{ selectedOrder.id }}</p>
+    <p>Status: {{ selectedOrder.status }}</p>
+    <p *ngIf="!isSender()">Kod zamówienia: {{ selectedOrder.trackingCode }}</p>
+    <p *ngIf="!isSender()">Kod otwarcia: {{ selectedOrder.openCode }}</p>
+    <p>Adres początkowy:
+      {{selectedOrder.startingAddress.city}},
+      {{selectedOrder.startingAddress.street}}
+      {{selectedOrder.startingAddress.houseNumber}},
+      {{selectedOrder.startingAddress.zipCode}}
+    </p>
+    <p>Adres docelowy:
+      {{selectedOrder.targetAddress.city}},
+      {{selectedOrder.targetAddress.street}}
+      {{selectedOrder.targetAddress.houseNumber}},
+      {{selectedOrder.targetAddress.zipCode}}
+    </p>
+    <p>Data stworzenia: {{ selectedOrder.dateCreated }}</p>
+    <p>Ostatnia aktualizacjia: {{ selectedOrder.lastUpdated }}</p>
+    <div class="buttons">
+      <button type="button" (click)="closeForm()">Zamknij</button>
+    </div>
+  </div>
+</div>

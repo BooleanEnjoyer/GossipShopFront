@@ -1,0 +1,90 @@
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation{
+
+}
+
+.header-logo{
+  width: 120px;
+  height: 120px;
+}
+
+.header-shopping-carts{
+  width: 50px;
+  height: 50px;
+}
+
+.header-login-icon{
+  width: 80px;
+  height: 80px;
+}
+
+.upperContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: none;
+}
+
+#logo {
+  margin-left: 10px;
+  font-size: 250%;
+  padding: 10px;
+  justify-content: start;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+#com {
+  margin-right: 10px;
+  border-right: solid;
+  border-right-width: 7px;
+  padding-right: 10px;
+  color: black;
+}
+
+#box {
+  color: #09b2e1f2;
+}
+
+.authentication{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 3vmax;
+}
+
+.buttonsbackgound{
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+}
+
+.menu {
+  padding-left: 25px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigationHolder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+}

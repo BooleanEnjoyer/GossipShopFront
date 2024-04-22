@@ -1,0 +1,25 @@
+<div class="popup-overlay">
+  <form [formGroup]="formGroup" (submit)="submitForm()">
+    <div class="popup-content">
+      <div class="findOrderContent" *ngIf="!orderFound">
+        <h4>Znajdź zamówienie</h4>
+        <p>Dane potrzebne do znalezienia: </p>
+        <label for="trackingCode">Kod:</label>
+        <input type="text" id="trackingCode" formControlName="trackingCode" [value]="trackingCode" (input)="trackingCode = $any($event.target).value" required >
+        <div *ngIf="orderTrackingCodeControl?.invalid && orderTrackingCodeControl?.touched">
+          <p class="error-message">Kod zamówienia jest wymagany.</p>
+        </div>
+      </div>
+      <div *ngIf="orderFound">
+        <app-order-details [selectedOrder]="responseOrder" (formClosed)="closeDetailsForm()"></app-order-details>
+      </div>
+      <br>
+      <br>
+      <div class="buttons">
+        <button type="submit">Szukaj</button>
+        <button type="button" (click)="closeForm()">Zamknij</button>
+      </div>
+    </div>
+  </form>
+</div>
+

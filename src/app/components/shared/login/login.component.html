@@ -1,0 +1,53 @@
+<div class="login">
+    <div class="back">
+      <button type="button" (click)="closeForm()" class="back-button">
+        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="arrow-img"/>
+      </button>
+    </div>
+    <div class="downContent">
+      <div class="logoContent">
+        <img src="/assets/LoginLogo.png" alt="logo" class="login-logo"/>
+      </div>
+      <div class="formContent">
+        <form [formGroup]="formGroup" (submit)="submitForm()" class="formFields">
+
+          <div class="fieldsLayout">
+            <div class="fields">
+                <div class="contentDescription">
+                  Sign in
+                </div>
+                <div class="addressField">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" formControlName="email" class= "input-text" [value]="authRequest.email"
+                         (input)="authRequest.email = $any($event.target).value" required>
+                </div>
+                <div *ngIf="emailControl('email')?.invalid && emailControl('email')?.touched">
+                  <p class="error-message">Email jest wymagany.</p>
+                </div>
+                <div class="addressField">
+                  <label for="password">Password</label>
+                  <input type="text" id="password" formControlName="password" class= "input-text" [value]="authRequest.password"
+                         (input)="authRequest.password = $any($event.target).value" required>
+                </div>
+                <div *ngIf="passwordControl('password')?.invalid && passwordControl('password')?.touched">
+                  <p class="error-message">Hasło musi mieć conajmniej 8 znaków<br>oraz znak specjalny, literę i numer.</p>
+                </div>
+
+                <div class="sign-in-button-block">
+                  <button type="submit" class="sign-in-button">Sign in</button>
+                </div>
+              <div class="optionalButtons">
+                <div class="optionalButtonHolder">
+                  <button type="button" class="optionalButtonStyle">Forgot password</button>
+                </div>
+                <div class="optionalButtonHolder">
+                  <button type="button" (click)="signUpPage()" class="optionalButtonStyle">Sign up</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+

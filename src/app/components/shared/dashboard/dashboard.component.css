@@ -1,0 +1,55 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  background-color: #14AE5C;
+  height: 100%;
+}
+
+.introduction{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+}
+.text-info{
+  font-family: Italic, sans-serif;
+  font-size: 4vw;
+  text-indent: 4vw;
+  font-weight: bolder;
+  color: white;
+  width: 80%;
+  margin-top: 4vh;
+}
+
+.dash-logo{
+  width: 77vw;
+  height: 32.6vh;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: min(1vh, 40%);
+  margin-bottom: 3vh;
+  max-width: 100%;
+}
+
+.buttons button {
+  display: grid;
+  min-height: 80px;
+  min-width: 25%;
+  max-width: 100%;
+  height: auto;
+  background-color: #AFF4C6;
+  color: black;
+  font-size: large;
+  font-weight: bolder;
+  font-family: Italic, sans-serif;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 30px;
+}
