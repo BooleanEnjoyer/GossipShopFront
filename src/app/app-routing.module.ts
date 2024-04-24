@@ -8,6 +8,7 @@ import {OrderBlackboxOpenComponent} from "./components/order/order-blackbox-open
 import {FindOrderComponent} from "./components/order/find-order/find-order.component";
 import {RegistrationComponent} from "./components/shared/registration/registration.component";
 import {LoginComponent} from "./components/shared/login/login.component";
+import { ProductListComponent } from './components/product/product-list/product-list.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'order/find/trackingCode', component: FindOrderComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'product/category/:category', component: ProductListComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: '**', redirectTo: '/dashboard', pathMatch: 'full'}
 ];

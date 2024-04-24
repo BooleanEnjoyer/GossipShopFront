@@ -1,9 +1,9 @@
 <div class="content">
     <div class="buttons">
-      <button routerLink="/order/make">Food</button>
-      <button routerLink="/transport/order/free">Music</button>
-      <button routerLink="/order/list">Clothes</button>
-      <button routerLink="/transport/list">Electronics</button>
+      <button (click)="navigateToCategory('Food')">Food</button>
+      <button (click)="navigateToCategory('Music')">Music</button>
+      <button (click)="navigateToCategory('Clothes')">Clothes</button>
+      <button (click)="navigateToCategory('Electronics')">Electronics</button>
     </div>
   <div class="introduction">
     <div>

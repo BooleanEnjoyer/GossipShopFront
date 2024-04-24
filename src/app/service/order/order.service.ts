@@ -26,7 +26,7 @@ export class OrderService {
   getFreeOrders(searchTerm: string, page: number, limit: number, sortOption: string, sortOrder: string):Observable<Order[]>{
     let url = environment.apiUrl + `/app/order/free/${page}/${limit}?searchTerm=${searchTerm}&sortOption=${sortOption}&sortOrder=${sortOrder}`;
     return this.httpClient.get<Order[]>(url, { headers: new HttpHeaders().set('Include-Token', 'true') })
-  }
+  } 
 
   getRecipientOrders(searchTerm: string, page: number, limit: number, sortOption: string, sortOrder: string, userEmail: string):Observable<Order[]> {
     let url =  environment.apiUrl + `/app/order/recipient/${page}/${limit}?searchTerm=${searchTerm}&sortOption=${sortOption}&sortOrder=${sortOrder}&userEmail=${userEmail}`;

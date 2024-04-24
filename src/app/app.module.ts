@@ -13,13 +13,15 @@ import {SharedModule} from "./components/shared/shared.module";
 import {HeaderComponent} from "./components/shared/header/header.component";
 import {NavigationComponent} from "./components/shared/navigation/navigation.component";
 import {DashboardComponent} from "./components/shared/dashboard/dashboard.component";
+import { ProductModule } from './components/product/product.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     NavigationComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
 
   imports: [
@@ -30,6 +32,7 @@ import {DashboardComponent} from "./components/shared/dashboard/dashboard.compon
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ProductModule,
     OrderModule,
     SharedModule,
     JwtModule.forRoot({
