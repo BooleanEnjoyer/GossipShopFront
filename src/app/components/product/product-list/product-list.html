@@ -1,90 +1,67 @@
-<div class="searchingContent">
-    <div class="sort">
-      <label for="sortSelect">Posortuj po:</label>
-      <select id="sortSelect" [(ngModel)]="selectedSortOption" (change)="changePage(0)">
-        <option value="none" >Brak</option>
-        <option value="trackingCode">Numerze zamówienia</option>
-        <option value="status">Statusie</option>
-        <option value="lastUpdated">Dacie</option>
-      </select>
-      <div class="sort-order">
-        <label for="sortOrderSelect"></label>
-        <select id="sortOrderSelect" [(ngModel)]="selectedSortOrder" (change)="changePage(0)">
-          <option value="asc">Rosnąco</option>
-          <option value="desc">Malejąco</option>
-        </select>
-      </div>
-    </div>
-    <div class="search">
-        <div class="searchLabel">
-          <div>
-            <label for="selectFindOption">Znajdź zamówienia</label>
-          </div>
-          <div>
-            <select id="selectFindOption" [(ngModel)]="findOption" (change)="changePage(0)">
-              <option value="sendOrders">Wysłane</option>
-              <option value="receivedOrders">Przychodzące</option>
-            </select>
-          </div>
+<div class="content">
+  <div class="searchingContent">
+    <div class="contentAdjust">
+      <div class="sort">
+        <div class="page-item">
+          <button class="assets-images" (click)="openFilter()">
+            <img src="\assets\filter.svg" alt="back" class="iconImage" />
+          </button>
         </div>
-      <div class="searchComponent">
-          <input type="text" [(ngModel)]="searchTerm" placeholder="Wyszukaj zamówienia" class="searchPlace">
-          <button (click)="search()">Szukaj</button>
+      </div>
+      <div class="search">
+        <div class="findText">
+          <input type="text" [(ngModel)]="searchTerm" placeholder="Find product" class="searchPlace">
+        </div>
+        <div>
+          <button class="assets-images" (click)="search()">
+            <img src="\assets\interface_search-magnifying-glass-hand-lens-b-a.svg" alt="back" class="iconImage" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  
+
   <div class="container">
     <ng-container *ngFor="let product of displayedProducts">
-      <div class = "item">
-        <div class = "orderData">
+      <div class="item">
+        <div>
           Name : {{ product.name }},
           Price: {{ product.price }}
+          IMG: <img [src]="getProductPath(product)" alt="back" class="pico"/>
         </div>
-        <div class = "editOrder">
+        <div class="editOrder">
           <button (click)="openDetailsForm(product)">Details</button>
-          <!-- <button *ngIf="canBeOpen(order)" (click)="openBlackBox(order)">Otwórz BlackBoxa</button> -->
-  <!--        <button (click)="openEditForm(order)">Edytuj zamówienie</button>-->
-  <!--        <button (click)="deleteOrder(order.id)">Usuń zamówienie</button>-->
         </div>
       </div>
     </ng-container>
   </div>
-  
+
   <div class="navigation">
     <div class="page-item" [class.disabled]="currentPage === 0">
-      <button class="page-link" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">Poprzednia</button>
+      <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
+        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="arrow-img" />
+      </button>
     </div>
     <div class="page-item">
-      <button class="page-link">{{ currentPage + 1 }}</button>
+      <button class="assets-images">{{ currentPage + 1 }}</button>
     </div>
     <div class="page-item" [class.disabled]="currentPage > totalPages - 2">
-      <button class="page-link" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">Następna</button>
+      <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
+        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back" class="arrow-img" />
+      </button>
     </div>
   </div>
-  
-  <div class="overlay" *ngIf="isDetailsFormOpen">
-    <app-product-details
-      [selectedProduct]="selectedProduct"
-      [findOption]="findOption"
-      (formClosed)="closeDetailsForm()">
-    </app-product-details>
-  </div>
-  
-  <!--<div class="overlay" *ngIf="isOpenBlackBoxOpen">-->
-  <!--  <app-order-blackbox-open-->
-  <!--    [selectedOrder]="selectedOrder"-->
-  <!--    [findOption]="findOption"-->
-  <!--    (formClosed)="closeBlackBoxOpenForm()">-->
-  <!--  </app-order-blackbox-open>-->
-  <!--</div>-->
-  
-  <!--<div class="overlay" *ngIf="isEditFormOpen">-->
-  <!--  <app-edit-order-form-->
-  <!--    [selectedOrder]="selectedOrder"-->
-  <!--    (formSubmitted)="submitEditForm($event)"-->
-  <!--    (formClosed)="closeEditForm()"-->
-  <!--  ></app-edit-order-form>-->
-  <!--</div>-->
-  
-  
+</div>
+
+<div class="overlay" *ngIf="isDetailsFormOpen">
+  <app-product-details [selectedProduct]="selectedProduct" [findOption]="findOption"
+    (formClosed)="closeDetailsForm()">
+  </app-product-details>
+</div>
+
+<div class="overlay" *ngIf="isFilterOpened">
+  <app-filter [sortOption]="sortOption" [sortOrder]="sortOrder" [findOption]="findOption" (formClosed)="closeFilter()"
+    (formSubmitted)="closeFilter()" (selectedSortOption)="sortOption = $event"
+    (selectedSortOrder)="sortOrder = $event">
+  </app-filter>
+</div>

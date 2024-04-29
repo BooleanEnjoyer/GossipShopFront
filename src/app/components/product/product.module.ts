@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    BrowserModule
+    BrowserModule,
+    SharedModule
   ]
 })
 export class ProductModule { }

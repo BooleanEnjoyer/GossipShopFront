@@ -72,7 +72,7 @@
                 </div>
                 <div class="addressField">
                   <label for="houseNumber">House number</label>
-                  <input type="number" id="houseNumber" formControlName="houseNumber" class="input-text"
+                  <input type="text" id="houseNumber" formControlName="houseNumber" class="input-text"
                          [value]="registrationRequest.address.houseNumber"
                          (input)="registrationRequest.address.houseNumber = $any($event.target).value" required>
                 </div>

@@ -35,9 +35,13 @@ footer ul li{
 }
 
 .footerStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   background-color: #14AE5C;
   /*padding: 20px;*/
   color: #FFFFFF;
+  flex: 1;
   text-align: center;
   width: 100%;
   font-size: large;
