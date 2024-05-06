@@ -23,14 +23,22 @@
 
   <div class="container">
     <ng-container *ngFor="let product of displayedProducts">
-      <div class="item">
-        <div>
-          Name : {{ product.name }},
-          Price: {{ product.price }}
-          IMG: <img [src]="getProductPath(product)" alt="back" class="pico"/>
-        </div>
-        <div class="editOrder">
-          <button (click)="openDetailsForm(product)">Details</button>
+      <div class="item" (click)="openDetailsForm(product)">
+        <div class="item-content">
+          <div class="img-content">
+            <img [src]="getProductPath(product)" alt="back" class="pico"/>
+          </div>
+          <div class="item-info">
+            <div class="item-base-description">
+              {{ product.name }}
+            </div>
+            <div class="item-base-description">
+              Price: {{ product.price }} $
+            </div>
+            <div class="description">
+              {{ product.description }}
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>

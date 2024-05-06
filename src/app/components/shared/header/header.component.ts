@@ -75,6 +75,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  goToDashBoard(){
+    this.router.navigateByUrl('/dashboard');
+  }
+  
   logout(){
     this.userService.logout();
     this.authService.clearUserStorage();
