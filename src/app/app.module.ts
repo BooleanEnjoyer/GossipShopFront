@@ -14,6 +14,7 @@ import {HeaderComponent} from "./components/shared/header/header.component";
 import {NavigationComponent} from "./components/shared/navigation/navigation.component";
 import {DashboardComponent} from "./components/shared/dashboard/dashboard.component";
 import { ProductModule } from './components/product/product.module';
+import { TemplateModule } from './components/templates/template.module';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { ProductModule } from './components/product/product.module';
     AppComponent,
     HeaderComponent,
     NavigationComponent,
-    DashboardComponent,
+    DashboardComponent
   ],
 
   imports: [
@@ -35,6 +36,7 @@ import { ProductModule } from './components/product/product.module';
     ProductModule,
     OrderModule,
     SharedModule,
+    TemplateModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

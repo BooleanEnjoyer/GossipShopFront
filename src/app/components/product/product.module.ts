@@ -6,12 +6,14 @@ import {BrowserModule} from "@angular/platform-browser";
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { ProductImageOverviewComponent } from './product-image-overview/product-image-overview.component';
+import { TemplateModule } from '../templates/template.module';
 
 @NgModule({
   declarations: [
     ProductListComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductImageOverviewComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BrowserModule,
-    SharedModule
+    SharedModule,
+    TemplateModule
   ]
 })
 export class ProductModule { }

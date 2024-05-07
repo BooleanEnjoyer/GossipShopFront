@@ -1,12 +1,69 @@
-<div class="popup-overlay">
-    <div class="popup-content">
-      <h2>Product details</h2>
-      <p>Id: {{ selectedProduct.id }}</p>
-      <p>Name: {{ selectedProduct.name }}</p>
-      <p>Price: {{ selectedProduct.price }}</p>
-      <p>Date created: {{ selectedProduct.dateCreated }}</p>
-      <div class="buttons">
-        <button type="button" (click)="closeForm()">Zamknij</button>
+<div class="product-details-content">
+  <div class="product-buy">
+    <div>
+
+    </div>
+    <div class="base-layout">
+      <h2>{{selectedProduct.name}}</h2>
+    </div>
+    <div class="base-layout">
+      <button class="assets-images">
+        <img src="/assets/plus.svg" alt="back" />
+      </button>
+    </div>
+  </div>
+  <div class="navigation">
+    <div [class.disabled]="currentPage === 0">
+      <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
+        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="navigation-arrow" />
+      </button>
+    </div>
+    <div>
+      <button class="assets-images">
+        <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openDetailsForm()"/>
+      </button>
+    </div>
+    <div [class.disabled]="currentPage > totalPages - 2">
+      <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
+        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back" class="navigation-arrow" />
+      </button>
+    </div>
+  </div>
+  <div class="product-info">
+    <div class="product-descriptioin">
+      <div>
+        <h3>Price:</h3>
+      </div>
+      <div class="product-text">
+        {{ selectedProduct.price }} $
+      </div>
+    </div>
+    <div>
+      <div>
+        <h3>Description:</h3>
+      </div>
+      <div class="product-text">
+        {{ selectedProduct.description }}
+      </div>
+    </div>
+    <div>
+      <div>
+        <h3>Specification:</h3>
+      </div>
+      <div class="product-text">
+        <ul *ngFor="let specification of productSpecificationFields">
+          <li>{{ specification }}</li>
+        </ul>
       </div>
     </div>
   </div>
+</div>
+
+<div class="overlay" *ngIf="isDetailsFormOpen">
+    <app-product-image-overview [currentImagePath]="currentImagePath"
+    [selectedProduct]="selectedProduct"
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (formClosed)="closeDetailsForm()">
+  </app-product-image-overview>
+</div>

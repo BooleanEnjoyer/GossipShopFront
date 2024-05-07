@@ -23,7 +23,7 @@
 
   <div class="container">
     <ng-container *ngFor="let product of displayedProducts">
-      <div class="item" (click)="openDetailsForm(product)">
+      <div class="item" (click)="goToProductDetails(product)">
         <div class="item-content">
           <div class="img-content">
             <img [src]="getProductPath(product)" alt="back" class="pico"/>
@@ -45,26 +45,20 @@
   </div>
 
   <div class="navigation">
-    <div class="page-item" [class.disabled]="currentPage === 0">
+    <div [class.disabled]="currentPage === 0">
       <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
-        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="arrow-img" />
+        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" />
       </button>
     </div>
-    <div class="page-item">
+    <div>
       <button class="assets-images">{{ currentPage + 1 }}</button>
     </div>
-    <div class="page-item" [class.disabled]="currentPage > totalPages - 2">
+    <div [class.disabled]="currentPage > totalPages - 2">
       <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
-        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back" class="arrow-img" />
+        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back" />
       </button>
     </div>
   </div>
-</div>
-
-<div class="overlay" *ngIf="isDetailsFormOpen">
-  <app-product-details [selectedProduct]="selectedProduct" [findOption]="findOption"
-    (formClosed)="closeDetailsForm()">
-  </app-product-details>
 </div>
 
 <div class="overlay" *ngIf="isFilterOpened">

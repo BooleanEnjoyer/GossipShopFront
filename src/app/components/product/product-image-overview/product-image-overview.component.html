@@ -1,0 +1,30 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+        <div class="buttons">
+            <app-close-button (click)="closeForm()"></app-close-button>
+        </div>
+        <div class="navigation">
+            <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()"
+                class="image-holder">
+                <button class="image-button">
+                    <img src="{{this.currentImagePath}}" alt="back" class="product-image" />
+                </button>
+            </div>
+        </div>
+        <div class="down-navigation">
+            <div [class.disabled]="currentPage === 0">
+                <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
+                    <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back"
+                        class="navigation-arrow" />
+                </button>
+            </div>
+            <div [class.disabled]="currentPage > totalPages - 2">
+                <button class="assets-images" (click)="changePage(currentPage + 1)"
+                    [disabled]="currentPage > totalPages - 2">
+                    <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back"
+                        class="navigation-arrow" />
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.close-button{
+    color: black;
+    border: none;
+    background: none;
+}
+
+.close-button-image{
+    width:7vw;
+    height: 4vh;
+}

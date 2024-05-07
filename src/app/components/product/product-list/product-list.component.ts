@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import {LogService} from "../../../service/log/log.service";
 import { Product } from 'src/app/entity/product/product';
 import {AuthService} from "../../../service/user/auth/auth.service";
@@ -47,6 +47,15 @@ export class ProductListComponent implements OnInit{
   openDetailsForm(product: Product): void {
     this.selectedProduct = product;
     this.isDetailsFormOpen = true;
+  }
+
+  goToProductDetails(product: Product): void {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        product: product
+      }
+    };
+    this.router.navigate(['/product/category', this.category, product.name], navigationExtras)
   }
 
   closeDetailsForm() {

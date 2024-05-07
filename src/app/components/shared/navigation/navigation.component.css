@@ -84,4 +84,10 @@ ul li{
   overflow-y: auto;
 }
 
+.links{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+}
 

@@ -9,6 +9,7 @@ import {FindOrderComponent} from "./components/order/find-order/find-order.compo
 import {RegistrationComponent} from "./components/shared/registration/registration.component";
 import {LoginComponent} from "./components/shared/login/login.component";
 import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'product/category/:category', component: ProductListComponent},
+  {path: 'product/category/:category/:productName', component: ProductDetailsComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: '**', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
