@@ -13,31 +13,18 @@
   }
   
   .popup-content {
-    width: 60%;
-    background-color: #fff;
+    width: 80%;
+    height: 30%;
+    background-color: #14AE5C;
     padding: 20px;
     border-radius: 15px;
-    margin-top: 6vh
+    margin-top: 6vh;
+    font-family: Italic, sans-serif;
+    font-size: 2vh;
+    font-weight: bolder;
+    color: black;
   }
-  
-  .fields{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
+   
   .formClear{
     display: flex;
     justify-content: space-between;
@@ -60,4 +47,50 @@
   .iconImage{
     width: 5vw;
     height: 4vh;
+  }
+
+  .filter-options {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #searchOptionSelect{
+    font-family: Italic, sans-serif;
+    background-color: #AFF4C6;
+    margin-right: 3vw;
+    font-size: 2vh;
+    height: 5vh;
+    width: 30vw;
+  }
+
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right center;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .sort-order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons{
+    display: flex;
+    width: 95%;
+    margin-top: 4vh;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+  }
+
+  .filter-image-button{
+    background-color: #00FF55;
+    border-color: black;
   }

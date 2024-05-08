@@ -62,7 +62,7 @@
 </div>
 
 <div class="overlay" *ngIf="isFilterOpened">
-  <app-filter [sortOption]="sortOption" [sortOrder]="sortOrder" [findOption]="findOption" (formClosed)="closeFilter()"
+  <app-filter [searchOption]="sortOption" [sortOrder]="sortOrder" (formClosed)="closeFilter()"
     (formSubmitted)="closeFilter()" (selectedSortOption)="sortOption = $event"
     (selectedSortOrder)="sortOrder = $event">
   </app-filter>

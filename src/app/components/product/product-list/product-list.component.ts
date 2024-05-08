@@ -24,7 +24,6 @@ export class ProductListComponent implements OnInit{
   searchTerm = '';
   sortOption = 'none';
   sortOrder = 'asc';
-  findOption = 'sendProducts';
   isDetailsFormOpen = false;
   isFilterOpened = false;
   productNumber = 0;
@@ -38,10 +37,6 @@ export class ProductListComponent implements OnInit{
       this.category = this.route.snapshot.paramMap.get('category') || '';
       console.log("CATEGORY: " + this.category)
       // this.getProducts(this.category);
-  }
-
-  isSender(){
-    return this.findOption === 'sendProduct';
   }
 
   openDetailsForm(product: Product): void {
@@ -89,12 +84,12 @@ export class ProductListComponent implements OnInit{
   }
 
   search() {
-    if(this.logService.isDebugEnabled()){
-      console.log(this.findOption)
-    }
-    if(this.findOption === "Opaaa"){
-      this.getProducts(this.category);
-    }
+    // if(this.logService.isDebugEnabled()){
+    //   console.log(this.sea)
+    // }
+    // if(this.findOption === "Opaaa"){
+    //   this.getProducts(this.category);
+    // }
   }
 
   private processResponseData(response: any) {

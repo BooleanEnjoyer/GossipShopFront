@@ -4,7 +4,7 @@
       <div class="menu" (click)="togglePanel()">
         <div>
           <img *ngIf="!isOpened()" src="/assets/Burger.png" alt="burger" class="header-shopping-carts"/>
-          <img *ngIf="isOpened()" src="/assets/interface_close-delete-cross-clear-b-a.svg" alt="cross" class="header-shopping-carts"/>
+          <img *ngIf="isOpened()" src="/assets/close-cross.svg" alt="cross" class="header-shopping-carts"/>
           <app-navigation [@slideInOut]="{ value: menuState, params: { navHeight: getNavHeight() } }" class="navigation"></app-navigation>
         </div>
       </div>

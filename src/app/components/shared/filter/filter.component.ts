@@ -7,34 +7,44 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  @Input() findOption !: string;
-  @Input() sortOption !: string;
+  @Input() searchOption !: string;
   @Input() sortOrder !: string;
   @Output() formClosed: EventEmitter<void> = new EventEmitter<void>();
   @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
   @Output() selectedSortOption: EventEmitter<string> = new EventEmitter<string>();
   @Output() selectedSortOrder: EventEmitter<string> = new EventEmitter<string>();
+  currentSortImagePath = '';
+  filterImagePath = 'assets/filter.svg';
 
   constructor() { }
 
   ngOnInit(): void {
+    this.currentSortImagePath = 'assets/sort-amount-up.svg'
+  }
 
+  toggleSort() {
+    if (this.sortOrder == 'desc') {
+      this.currentSortImagePath = 'assets/sort-amount-up.svg';
+      this.sortOrder = 'asc';
+    } else if (this.sortOrder == 'asc') {
+      this.sortOrder = 'desc';
+      this.currentSortImagePath = 'assets/sort-amount-down.svg';
+    }
+    console.log("Sort order: " + this.sortOrder)
   }
 
   closeForm() {
-    this.sortOption = 'none';
+    this.searchOption = 'none';
     this.sortOrder = 'asc';
-    this.findOption = 'sendProducts';
     this.formClosed.emit();
   }
 
   submitForm() {
-    console.log("find option: " + this.findOption);
-    console.log("sortOption: " + this.sortOption);
+    console.log("sortOption: " + this.searchOption);
     console.log("sortOrder: " + this.sortOrder);
     console.log("selected sort option: " + this.selectedSortOption);
     console.log("selected sort order: " + this.selectedSortOrder);
-    this.selectedSortOption.emit(this.sortOption);
+    this.selectedSortOption.emit(this.searchOption);
     this.selectedSortOrder.emit(this.sortOrder);
     this.formSubmitted.emit();
   }

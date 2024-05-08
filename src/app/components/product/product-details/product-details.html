@@ -18,8 +18,8 @@
         <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="navigation-arrow" />
       </button>
     </div>
-    <div>
-      <button class="assets-images">
+    <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
+      <button class="assets-images" class="image-holder">
         <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openDetailsForm()"/>
       </button>
     </div>

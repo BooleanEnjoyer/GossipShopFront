@@ -1,29 +1,33 @@
 <div class="popup-overlay">
-    <div class="popup-content">
-        <h2>
-            <div class="formClear">
-                <div>Filter</div>
-                <button class="assets-images"><img src="assets\interface_close-delete-cross-clear-b-a.svg" alt="back" class="iconImage" (click)="closeForm()"/></button>
-            </div>
-        </h2>
-      <p>Category:</p>
-      <select id="sortSelect" [(ngModel)]="sortOption">
-        <option value="none" >Brak</option>
-        <option value="trackingCode">Numerze zamówienia</option>
-        <option value="status">Statusie</option>
-        <option value="lastUpdated">Dacie</option>
+  <div class="popup-content">
+    <div class="formClear">
+      <div>
+        <h2>Filter</h2>
+      </div>
+      <button class="assets-images">
+        <img src="assets\close-cross.svg" alt="back" class="iconImage" (click)="closeForm()" />
+      </button>
+    </div>
+    <div>
+      <p>Search category:</p>
+    </div>
+    <div class="filter-options">
+      <select id="searchOptionSelect" [(ngModel)]="searchOption">
+        <option value="none">None</option>
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+        <option value="specification">Specyfication</option>
       </select>
       <div class="sort-order">
-        <label for="sortOrder"></label>
-        <select id="sortOrder" [(ngModel)]="sortOrder">
-          <option value="asc">Rosnąco</option>
-          <option value="desc">Malejąco</option>
-        </select>
+        <img [src]="currentSortImagePath" alt="back" class="iconImage" (click)="toggleSort()" />
       </div>
-      <div class="buttons">
-        <button type="button" (click)="submitForm()">
-            Ok
+    </div>
+    <div class="buttons">
+      <div>
+        <button type="button" (click)="submitForm()" class="filter-image-button">
+          <img [src]="filterImagePath" alt="back" class="iconImage" (click)="toggleSort()" />
         </button>
       </div>
     </div>
   </div>
+</div>
