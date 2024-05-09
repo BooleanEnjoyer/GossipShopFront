@@ -8,12 +8,14 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { SharedModule } from '../shared/shared.module';
 import { ProductImageOverviewComponent } from './product-image-overview/product-image-overview.component';
 import { TemplateModule } from '../templates/template.module';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductDetailsComponent,
     ProductImageOverviewComponent,
+    ProductAddComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,103 @@
+@media screen and (orientation: portrait) {
+    .product-image{
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .product-image{
+        display: flex;
+        height: 100%;
+        width: 70%;
+    }
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 2vh;
+    height: 93%;
+    width: 90%;
+    overflow-y: auto;
+    background-color: #14AE5C;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    overflow-y: auto;
+}
+
+.buttons{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.image-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+}
+
+.assets-images{
+    display: flex;
+    border: none;
+    background: none;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+}
+
+.down-navigation{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 4vw;
+    z-index: 999;
+    bottom: 0;
+}
+
+.navigation-arrow{
+    width: 8vw;
+    height: 8vh;
+}
+
+.image-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview{
+    padding-top: 2vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

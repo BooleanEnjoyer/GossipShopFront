@@ -6,10 +6,8 @@
     <div class="base-layout">
       <h2>{{selectedProduct.name}}</h2>
     </div>
-    <div class="base-layout">
-      <button class="assets-images">
-        <img src="/assets/plus.svg" alt="back" />
-      </button>
+    <div class="base-layout" (click)="openForm('add-product')">
+      <img src="/assets/plus.svg" alt="back" class="plus-sign" />
     </div>
   </div>
   <div class="navigation">
@@ -20,7 +18,7 @@
     </div>
     <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
       <button class="assets-images" class="image-holder">
-        <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openDetailsForm()"/>
+        <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openForm('details')" />
       </button>
     </div>
     <div [class.disabled]="currentPage > totalPages - 2">
@@ -60,10 +58,21 @@
 </div>
 
 <div class="overlay" *ngIf="isDetailsFormOpen">
-    <app-product-image-overview [currentImagePath]="currentImagePath"
+  <app-product-image-overview 
+    [currentImagePath]="currentImagePath" 
     [selectedProduct]="selectedProduct"
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (formClosed)="closeDetailsForm()">
+    [currentPage]="currentPage" 
+    [totalPages]="totalPages" 
+    (formClosed)="closeForm('details')">
   </app-product-image-overview>
+</div>
+
+<div class="overlay" *ngIf="isAddProductOpen">
+  <app-product-add 
+    [currentImagePath]="currentImagePath" 
+    [selectedProduct]="selectedProduct" 
+    [currentPage]="currentPage"
+    [totalPages]="totalPages" 
+    (formClosed)="closeForm('add-product')">
+  </app-product-add>
 </div>

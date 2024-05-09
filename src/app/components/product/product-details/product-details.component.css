@@ -24,6 +24,11 @@
   font-weight: bolder; 
 }
 
+.plus-sign{
+  width: 9vw;
+  height: 9vh;
+}
+
 .product-buy > div {
   flex: 1;
 }

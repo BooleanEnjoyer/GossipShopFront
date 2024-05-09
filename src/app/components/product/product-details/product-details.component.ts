@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   currentPage = 0;
   totalPages = 4;
   isDetailsFormOpen = false;
+  isAddProductOpen = false;
   startX: number = 0;
   threshold: number = 40;
   
@@ -36,13 +37,21 @@ export class ProductDetailsComponent implements OnInit {
     this.productSpecificationFields = specificationsString.split(',').map(spec => spec.trim());
   }
 
-  openDetailsForm(): void {
-    this.isDetailsFormOpen = true;
+  openForm(formName: string): void {
+    if(formName === 'details'){
+      this.isDetailsFormOpen = true;
+    } else if(formName === 'add-product'){
+      this.isAddProductOpen = true;
+    }
     document.body.style.overflowY = 'hidden';
   }
 
-  closeDetailsForm() {
-    this.isDetailsFormOpen = false;
+  closeForm(formName: string) {
+    if(formName === 'details'){
+      this.isDetailsFormOpen = false;
+    } else if(formName === 'add-product'){
+      this.isAddProductOpen = false;
+    }
     document.body.style.overflowY = 'auto';
   }
 
