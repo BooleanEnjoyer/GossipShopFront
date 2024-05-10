@@ -13,35 +13,14 @@ export class ProductAddComponent implements OnInit {
   @Input() currentPage !: number;
   @Input() selectedProduct !: Product;
   @Output() formClosed: EventEmitter<void> = new EventEmitter<void>();
+  @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
   currentIndex: number = 0;
-  startX: number = 0;
   threshold: number = 40;
+  submitImagePath = 'assets/finance_shopping-cart-grocery-store-b-s.svg';
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onTouchStart(event: TouchEvent): void {
-    this.startX = event.touches[0].clientX;
-  }
-
-  onTouchMove(event: TouchEvent): void {
-    const currentX = event.touches[0].clientX;
-    const diff = currentX - this.startX;
-    console.log("Swipe")
-    if (diff > this.threshold && !this.isFirstItem()) {
-      this.changePage(this.currentPage-1)
-      console.log("Current img swipe path: " + this.currentImagePath)
-    }
-    else if (diff < -this.threshold && !this.isLastItem()) {
-      this.changePage(this.currentPage+1);
-      console.log("Current img swipe path: " + this.currentImagePath)
-    }
-  }
-
-  onTouchEnd(): void {
-    this.startX = 0;
   }
 
   changePage(pageIndex: number) {
@@ -50,23 +29,19 @@ export class ProductAddComponent implements OnInit {
     console.log("Current img path: " + this.currentImagePath)
   }
 
-  isLastItem(){
-    const test = this.currentPage === this.totalPages - 1;
-    console.log("LAST ITEM TEST: " + test)
-    return test;
-  }
-
-  isFirstItem(){
-    const test = this.currentPage === 0;
-    console.log("FIRST ITEM TEST: " + test)
-    return test;
-  }
-
   getCurrentImagePath(){
     return this.selectedProduct.imagesPath + this.selectedProduct.imagesNames[this.currentPage];
   }
 
+  addProductToBasket() {
+
+  }
+
   closeForm() {
     this.formClosed.emit();
+  }
+
+  submitForm() {
+    this.formSubmitted.emit();
   }
 }

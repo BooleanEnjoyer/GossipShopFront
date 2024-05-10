@@ -17,10 +17,9 @@
 .popup-content {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
     border-radius: 4px;
     padding: 2vh;
-    height: 93%;
+    height: 73%;
     width: 90%;
     overflow-y: auto;
     background-color: #14AE5C;
@@ -38,6 +37,22 @@
     justify-content: center;
     z-index: 99;
     overflow-y: auto;
+}
+
+.item-base-description{
+  font-family: Italic, sans-serif;
+  font-size: 4vh;
+  font-weight: bolder;
+  margin-bottom: 2vh;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  font-family: Italic, sans-serif;
+  font-size: 3vh;
+  font-weight: bolder;
+  margin-bottom: 1vh;
 }
 
 .buttons{
@@ -71,6 +86,15 @@
 
 }
 
+.overview{
+  padding-top: 2vh;
+  margin-bottom: 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .down-navigation{
     width: 100%;
     display: flex;
@@ -82,22 +106,29 @@
     bottom: 0;
 }
 
-.navigation-arrow{
-    width: 8vw;
-    height: 8vh;
-}
-
 .image-holder{
     display: flex;
     justify-content: center;
     align-items: center;
+  margin-bottom: 2vh;
 }
 
-.overview{
-    padding-top: 2vh;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.iconImage{
+  width: 13vw;
+  height: 7vh;
+}
+
+.filter-image-button{
+  background-color: #00FF55;
+  border-color: black;
+  width: 15vw;
+  height: 8vh;
+}
+
+.submit-image-holder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 8vh;
 }
