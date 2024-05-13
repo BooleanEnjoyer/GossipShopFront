@@ -55,11 +55,14 @@ export class HeaderComponent implements OnInit {
     console.log("BEFORE " + this.menuState)
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
     console.log("AFTER " + this.menuState)
-
+    console.log("AFTER " + document.querySelector('.navPopup')?.clientHeight)
+    let content = document.querySelector('.appLayout') as HTMLElement;
+    let navContent = document.querySelector('.navPopup') as HTMLElement;
     if(this.isOpened()){
-      document.body.style.overflowY = 'hidden';
+      content.style.overflowY = 'hidden';
+      navContent.style.overflowY = 'auto';
     } else {
-      document.body.style.overflowY = 'auto';
+      content.style.overflowY = 'auto';
     }
   }
 

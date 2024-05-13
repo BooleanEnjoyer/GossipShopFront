@@ -4,7 +4,7 @@ header {
 }
 
 .navigation{
-
+  overflow-y: auto;
 }
 
 .header-logo{

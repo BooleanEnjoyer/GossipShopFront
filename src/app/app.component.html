@@ -2,7 +2,7 @@
   <app-header></app-header>
 
 
-  <div class="appLayout">
+  <div class="appLayout" #appLayout>
     <div class = mainContainer>
       <router-outlet></router-outlet>
     </div>
@@ -23,7 +23,7 @@
 </ng-container>
 
 <ng-container *ngIf="showOnlyRouterContent()" class="onlyRouterContent">
-  <div class="mainContainer">
+  <div class="mainContainer" #mainContainer>
     <router-outlet></router-outlet>
   </div>
 </ng-container>

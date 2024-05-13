@@ -15,16 +15,33 @@
             <div class="down-navigation">
                 <div [class.disabled]="currentPage === 0">
                     <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
-                        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back"
+                        <img src="/assets/left-arrow.svg" alt="back"
                             class="navigation-arrow" />
                     </button>
                 </div>
                 <div [class.disabled]="currentPage > totalPages - 2">
                     <button class="assets-images" (click)="changePage(currentPage + 1)"
                         [disabled]="currentPage > totalPages - 2">
-                        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back"
+                        <img src="\assets\right-arrow.svg" alt="back"
                             class="navigation-arrow" />
                     </button>
+                </div>
+            </div>
+            <div class="add-product">
+                <div class="product-info">
+                    <div>
+                        <h3>Price:</h3>
+                    </div>
+                    <div class="product-text">
+                        {{ selectedProduct.price }} $
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div>
+                        <button type="button" (click)="submitForm()" class="add-to-cart-image-button">
+                            <img [src]="productAddImagePath" alt="back" class="iconImage" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

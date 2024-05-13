@@ -46,6 +46,28 @@ export class ProductDetailsComponent implements OnInit {
     document.body.style.overflowY = 'hidden';
   }
 
+  submitForm() {
+    //TODO zrobić tutaj addProductToUser
+      // this.orderService.addOrder(this.order).subscribe(
+      //   (response) => {
+      //     if(this.logService.isDebugEnabled()){
+      //       console.log(`Zamówienie złożone pomyślnie ${response}`);
+      //     }
+      //     this.formSubmitted.emit(this.order);
+      //   },
+      //   (error) => {
+      //     console.error('Błąd przy odczycie zamówienia', error);
+      //   },
+      //   () => {
+      //     alert('Pomyślnie stworzono zamówienie!')
+      //     this.formGroup.reset();
+      //     // this.getFreeBlackBoxes();
+      //   }
+      // );
+    this.isAddProductOpen = false;
+    document.body.style.overflowY = 'auto';
+  }
+
   closeForm(formName: string) {
     if(formName === 'details'){
       this.isDetailsFormOpen = false;
@@ -54,7 +76,7 @@ export class ProductDetailsComponent implements OnInit {
     }
     document.body.style.overflowY = 'auto';
   }
-
+  
   changePage(pageIndex: number) {
     this.currentPage = pageIndex;
     this.currentImagePath = this.getCurrentImagePath();

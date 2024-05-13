@@ -13,7 +13,7 @@
   <div class="navigation">
     <div [class.disabled]="currentPage === 0">
       <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
-        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" class="navigation-arrow" />
+        <img src="/assets/left-arrow.svg" alt="back" class="navigation-arrow" />
       </button>
     </div>
     <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
@@ -23,7 +23,7 @@
     </div>
     <div [class.disabled]="currentPage > totalPages - 2">
       <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
-        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back" class="navigation-arrow" />
+        <img src="\assets\right-arrow.svg" alt="back" class="navigation-arrow" />
       </button>
     </div>
   </div>
@@ -72,7 +72,8 @@
     [currentImagePath]="currentImagePath" 
     [selectedProduct]="selectedProduct" 
     [currentPage]="currentPage"
-    [totalPages]="totalPages" 
+    [totalPages]="totalPages"
+    (formSubmitted)="submitForm()"
     (formClosed)="closeForm('add-product')">
   </app-product-add>
 </div>

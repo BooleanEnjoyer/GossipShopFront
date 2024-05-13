@@ -14,7 +14,7 @@
         </div>
         <div>
           <button class="assets-images" (click)="search()">
-            <img src="\assets\interface_search-magnifying-glass-hand-lens-b-a.svg" alt="back" class="iconImage" />
+            <img src="\assets\magnifing-glass.svg" alt="back" class="iconImage" />
           </button>
         </div>
       </div>
@@ -47,7 +47,7 @@
   <div class="navigation">
     <div [class.disabled]="currentPage === 0">
       <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
-        <img src="/assets/arrows_chevron-left-keyboard-arrow-left-b-a.svg" alt="back" />
+        <img src="/assets/left-arrow.svg" alt="back" />
       </button>
     </div>
     <div>
@@ -55,7 +55,7 @@
     </div>
     <div [class.disabled]="currentPage > totalPages - 2">
       <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
-        <img src="\assets\arrows_chevron-right-keyboard-arrow-right-b-a.svg" alt="back" />
+        <img src="\assets\right-arrow.svg" alt="back" />
       </button>
     </div>
   </div>

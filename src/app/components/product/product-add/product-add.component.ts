@@ -12,10 +12,12 @@ export class ProductAddComponent implements OnInit {
   @Input() totalPages !: number;
   @Input() currentPage !: number;
   @Input() selectedProduct !: Product;
+  @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
   @Output() formClosed: EventEmitter<void> = new EventEmitter<void>();
   currentIndex: number = 0;
   startX: number = 0;
   threshold: number = 40;
+  productAddImagePath = 'assets/shoping-cart.svg';
 
   constructor() { }
 
@@ -64,6 +66,10 @@ export class ProductAddComponent implements OnInit {
 
   getCurrentImagePath(){
     return this.selectedProduct.imagesPath + this.selectedProduct.imagesNames[this.currentPage];
+  }
+
+  submitForm() {
+    this.formSubmitted.emit();
   }
 
   closeForm() {
