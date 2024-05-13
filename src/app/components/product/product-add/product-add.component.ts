@@ -12,12 +12,11 @@ export class ProductAddComponent implements OnInit {
   @Input() totalPages !: number;
   @Input() currentPage !: number;
   @Input() selectedProduct !: Product;
-  @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
   @Output() formClosed: EventEmitter<void> = new EventEmitter<void>();
   @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
   currentIndex: number = 0;
   threshold: number = 40;
-  submitImagePath = 'assets/finance_shopping-cart-grocery-store-b-s.svg';
+  submitImagePath = 'assets/shoping-cart.svg';
 
   constructor() { }
 
@@ -40,9 +39,5 @@ export class ProductAddComponent implements OnInit {
 
   closeForm() {
     this.formClosed.emit();
-  }
-
-  submitForm() {
-    this.formSubmitted.emit();
   }
 }
