@@ -1,49 +1,32 @@
 <div class="popup-overlay">
-    <div class="popup-content">
-        <div class="buttons">
-            <app-close-button (click)="closeForm()"></app-close-button>
-        </div>
-        <div class="overview">
-            <div class="navigation">
-                <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()"
-                    class="image-holder">
-                    <button class="image-button">
-                        <img src="{{this.currentImagePath}}" alt="back" class="product-image" />
-                    </button>
-                </div>
-            </div>
-            <div class="down-navigation">
-                <div [class.disabled]="currentPage === 0">
-                    <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
-                        <img src="/assets/left-arrow.svg" alt="back"
-                            class="navigation-arrow" />
-                    </button>
-                </div>
-                <div [class.disabled]="currentPage > totalPages - 2">
-                    <button class="assets-images" (click)="changePage(currentPage + 1)"
-                        [disabled]="currentPage > totalPages - 2">
-                        <img src="\assets\right-arrow.svg" alt="back"
-                            class="navigation-arrow" />
-                    </button>
-                </div>
-            </div>
-            <div class="add-product">
-                <div class="product-info">
-                    <div>
-                        <h3>Price:</h3>
-                    </div>
-                    <div class="product-text">
-                        {{ selectedProduct.price }} $
-                    </div>
-                </div>
-                <div class="buttons">
-                    <div>
-                        <button type="button" (click)="submitForm()" class="add-to-cart-image-button">
-                            <img [src]="productAddImagePath" alt="back" class="iconImage" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="popup-content">
+    <div class="buttons">
+      <app-close-button (click)="closeForm()"></app-close-button>
     </div>
+    <div class="overview">
+      <div class="item-info">
+        <div class="item-base-description">
+          {{ selectedProduct.name }}
+        </div>
+      </div>
+      <div class="image-holder">
+        <button class="image-button">
+          <img src="{{currentImagePath}}" alt="back" class="product-image"/>
+        </button>
+      </div>
+      <div class="description">
+        Price: {{ selectedProduct.price }} $
+      </div>
+      <div class="description">
+        {{ selectedProduct.description }}
+      </div>
+    </div>
+    <div class="buttons">
+      <div class="submit-image-holder">
+        <button type="button" (click)="submitForm()" class="filter-image-button">
+          <img [src]="submitImagePath" alt="back" class="iconImage" (click)="addProductToBasket()"/>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

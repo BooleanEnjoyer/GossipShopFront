@@ -17,7 +17,6 @@
 .popup-content {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
     border-radius: 4px;
     padding: 2vh;
     height: 60%;
@@ -38,6 +37,22 @@
     justify-content: center;
     z-index: 99;
     overflow-y: auto;
+}
+
+.item-base-description{
+  font-family: Italic, sans-serif;
+  font-size: 4vh;
+  font-weight: bolder;
+  margin-bottom: 2vh;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  font-family: Italic, sans-serif;
+  font-size: 3vh;
+  font-weight: bolder;
+  margin-bottom: 1vh;
 }
 
 .buttons {
@@ -71,6 +86,15 @@
 
 }
 
+.overview{
+  padding-top: 2vh;
+  margin-bottom: 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .down-navigation {
     width: 100%;
     display: flex;
@@ -91,6 +115,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  margin-bottom: 2vh;
 }
 
 .overview {
