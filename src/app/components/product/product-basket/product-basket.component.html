@@ -1,0 +1,34 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+        <div class="buttons">
+            <app-close-button (click)="closeForm()"></app-close-button>
+        </div>
+        <div class="container">
+            <ng-container *ngFor="let product of displayedProducts">
+              <div class="item" (click)="goToProductDetails(product)">
+                <div class="item-content">
+                  <div class="img-content">
+                    <img [src]="getProductPath(product)" alt="back" class="pico"/>
+                  </div>
+                  <div class="item-info">
+                    <div class="item-base-description">
+                      {{ product.name }}
+                    </div>
+                    <div class="item-base-description">
+                      Price: {{ product.price }} $
+                    </div>
+                    <div class="description">
+                      {{ product.description }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        <div class="submit-image-holder">
+            <button type="button" (click)="submitForm()" class="add-to-cart-image-button">
+                <img src="{{submitImagePath}}" alt="back" class="iconImage" />
+            </button>
+        </div>
+    </div>
+</div>

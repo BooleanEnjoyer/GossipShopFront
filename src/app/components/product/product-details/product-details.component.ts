@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/entity/product/product';
 import { generateMusicProducts } from '../product-list/mock-products';
+import { ShoppingCartService } from 'src/app/service/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -22,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
   startX: number = 0;
   threshold: number = 40;
   
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+     private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.selectedProduct = this.mockProducts[0];
@@ -47,23 +49,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   submitForm() {
-    //TODO zrobić tutaj addProductToUser
-      // this.orderService.addOrder(this.order).subscribe(
-      //   (response) => {
-      //     if(this.logService.isDebugEnabled()){
-      //       console.log(`Zamówienie złożone pomyślnie ${response}`);
-      //     }
-      //     this.formSubmitted.emit(this.order);
-      //   },
-      //   (error) => {
-      //     console.error('Błąd przy odczycie zamówienia', error);
-      //   },
-      //   () => {
-      //     alert('Pomyślnie stworzono zamówienie!')
-      //     this.formGroup.reset();
-      //     // this.getFreeBlackBoxes();
-      //   }
-      // );
+    console.log("Form submitted, selected product: " + this.selectedProduct.name)
+    this.shoppingCartService.addToCart(this.selectedProduct);
     this.isAddProductOpen = false;
     document.body.style.overflowY = 'auto';
   }

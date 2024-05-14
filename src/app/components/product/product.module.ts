@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductImageOverviewComponent } from './product-image-overview/product-image-overview.component';
 import { TemplateModule } from '../templates/template.module';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductBasketComponent } from './product-basket/product-basket.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProductAddComponent } from './product-add/product-add.component';
     ProductDetailsComponent,
     ProductImageOverviewComponent,
     ProductAddComponent,
+    ProductBasketComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,9 @@ import { ProductAddComponent } from './product-add/product-add.component';
     BrowserModule,
     SharedModule,
     TemplateModule
+  ],
+  exports: [
+    ProductBasketComponent
   ]
 })
 export class ProductModule { }

@@ -26,7 +26,8 @@ import {animate, style, state, trigger, transition} from "@angular/animations";
 export class HeaderComponent implements OnInit {
 
   menuState = 'in';
-
+  isProductBasketOpened = false;
+  
   constructor(private router: Router, private authService: AuthService, private userService: UserService,
               private elementRef: ElementRef) {
     this.router.events
@@ -64,6 +65,18 @@ export class HeaderComponent implements OnInit {
     } else {
       content.style.overflowY = 'auto';
     }
+  }
+
+  openProductBasket(){
+    this.isProductBasketOpened = true;
+  }
+
+  closeProductBasket(){
+    this.isProductBasketOpened = false;
+  }
+
+  submitProductBasket(){
+    this.isProductBasketOpened = false;
   }
 
   isLoggedIn(): boolean{
