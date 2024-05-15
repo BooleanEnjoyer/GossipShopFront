@@ -14,7 +14,11 @@
   
   .popup-content {
     width: 80%;
-    height: 30%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background-color: #14AE5C;
     padding: 20px;
     border-radius: 15px;
@@ -24,17 +28,60 @@
     font-weight: bolder;
     color: black;
   }
-   
+  
+  .container{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display: flex;
+    width: 100%;
+    flex:1;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    overflow-y: auto;
+  }
+
+  .empty-image{
+    width: 60%;
+    height: 60%;
+  }
+
   .iconImage{
     width: 5vw;
     height: 4vh;
   }
 
+  .pico{
+    width: 30vw;
+    height: 10vh;
+  }
+
+  .img-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .empty-img-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .buttons{
     display: flex;
     width: 95%;
-    margin-top: 4vh;
+    margin-top: 2vh;
     flex-direction: row;
+    justify-content: right;
+    align-items: center;
+  }
+
+  .submit-image-holder{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
     justify-content: right;
     align-items: center;
   }

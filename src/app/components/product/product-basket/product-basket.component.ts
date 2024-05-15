@@ -14,15 +14,15 @@ import { ShoppingCartService } from 'src/app/service/shopping-cart/shopping-cart
 })
 export class ProductBasketComponent implements OnInit {
 
-  @Input() currentImagePath ?: string;
+  @Input() currentImagePath?: string;
   @Input() totalPages !: number;
   @Input() currentPage !: number;
   @Input() selectedProduct !: Product;
   @Output() formClosed: EventEmitter<void> = new EventEmitter<void>();
   @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
-  
+
   products: Product[] = [];
-  displayedProducts: Product[] = generateMusicProducts();
+  displayedProducts: Product[] = [];
   itemsPerPage = 4;
   searchTerm = '';
   sortOption = 'none';
@@ -31,23 +31,27 @@ export class ProductBasketComponent implements OnInit {
   isFilterOpened = false;
   productNumber = 0;
   category = '';
-  submitImagePath='assets/wallet.svg';
-
+  submitImagePath = 'assets/wallet.svg';
+  noProductPath = 'assets/Musical_Dashboard_Logo.png'
   constructor(private router: Router, private route: ActivatedRoute,
     private logService: LogService, private authService: AuthService,
-     private productService: ProductService, private shoppingCartService: ShoppingCartService) { }
+    private productService: ProductService, private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.displayedProducts = this.shoppingCartService.getCartItems();
   }
 
-  getProductPath(product: Product){
+  getProductPath(product: Product) {
     console.log("Product type: " + product.productType)
     console.log("Product name: " + product.name)
     console.log("Product img path: " + product.imagesNames[0])
     const imagePath = `assets/images/${product.productType}/${product.name}/${product.imagesNames[0]}`;
     return imagePath;
-}
+  }
+
+  isProductBasketEmpty(){
+    return this.displayedProducts.length === 0;
+  }
 
   openDetailsForm(product: Product): void {
     this.selectedProduct = product;

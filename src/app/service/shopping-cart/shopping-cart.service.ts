@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { isEmpty } from 'rxjs';
 import { Product } from 'src/app/entity/product/product';
 
 @Injectable({
@@ -12,6 +13,10 @@ export class ShoppingCartService {
 
   addToCart(product: Product): void {
     this.cartItems.push(product);
+  }
+
+  isCartEmpty(){
+    return this.cartItems.length === 0
   }
 
   getCartItems(): Product[] {

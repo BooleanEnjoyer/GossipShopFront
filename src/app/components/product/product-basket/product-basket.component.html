@@ -5,7 +5,7 @@
         </div>
         <div class="container">
             <ng-container *ngFor="let product of displayedProducts">
-              <div class="item" (click)="goToProductDetails(product)">
+              <div class="item" (click)="goToProductDetails(product)" *ngIf="!isProductBasketEmpty()">
                 <div class="item-content">
                   <div class="img-content">
                     <img [src]="getProductPath(product)" alt="back" class="pico"/>
@@ -17,13 +17,15 @@
                     <div class="item-base-description">
                       Price: {{ product.price }} $
                     </div>
-                    <div class="description">
-                      {{ product.description }}
-                    </div>
                   </div>
                 </div>
               </div>
             </ng-container>
+            <div *ngIf="isProductBasketEmpty()">
+              <div class="empty-img-content">
+                <img [src]="noProductPath" alt="back" class="empty-image"/>
+              </div>
+            </div>
           </div>
         <div class="submit-image-holder">
             <button type="button" (click)="submitForm()" class="add-to-cart-image-button">
