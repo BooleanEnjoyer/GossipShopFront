@@ -149,6 +149,19 @@
     align-items: center;
 }
 
+.video-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .video-frame{
+    width: 45vw;
+    height: 30vh;
+  }
+
 .product-text {
     margin-left: 3vw;
     font-weight: lighter;

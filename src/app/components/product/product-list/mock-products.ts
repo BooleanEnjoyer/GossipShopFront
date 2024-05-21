@@ -9,7 +9,7 @@ export function generateMusicProducts(): Product[] {
         'Acoustic Guitar',
         299.99,
         basePath + '\\Acoustic Guitar\\',
-        ['1.png', '2.png', '3.png', '4.png'],
+        ['1.png', '2.png', '3.png', '4.png' , 'parrot.mp4'],
         new Date(),
         'Classic acoustic guitar for beginners',
         '6 strings, wooden body, steel strings',

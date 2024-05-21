@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/entity/product/product';
+import { MediaService } from 'src/app/service/media/media.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ProductImageOverviewComponent implements OnInit {
   startX: number = 0;
   threshold: number = 40;
 
-  constructor() { }
+  constructor(public mediaService: MediaService) { }
 
   ngOnInit(): void {
   }

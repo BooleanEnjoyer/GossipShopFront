@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/entity/product/product';
+import { MediaService } from 'src/app/service/media/media.service';
 
 @Component({
   selector: 'app-product-add',
@@ -18,7 +19,7 @@ export class ProductAddComponent implements OnInit {
   threshold: number = 40;
   submitImagePath = 'assets/shoping-cart.svg';
 
-  constructor() { }
+  constructor(public mediaService: MediaService) { }
 
   ngOnInit(): void {
   }

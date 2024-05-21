@@ -17,9 +17,16 @@
       </button>
     </div>
     <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
-      <button class="assets-images" class="image-holder">
-        <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openForm('details')" />
-      </button>
+      <div class="assets-images" class="image-holder">
+        <div *ngIf="mediaService.isImage(getCurrentImagePath())">
+          <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openForm('details')" />
+        </div>
+        <div *ngIf="mediaService.isVideo(getCurrentImagePath())" class="video-holder">
+          <video controls class="video-frame">
+            <source [src]="getCurrentImagePath()" type="video/mp4">
+          </video>
+        </div>
+      </div>
     </div>
     <div [class.disabled]="currentPage > totalPages - 2">
       <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
@@ -58,22 +65,13 @@
 </div>
 
 <div class="overlay" *ngIf="isDetailsFormOpen">
-  <app-product-image-overview 
-    [currentImagePath]="currentImagePath" 
-    [selectedProduct]="selectedProduct"
-    [currentPage]="currentPage" 
-    [totalPages]="totalPages" 
-    (formClosed)="closeForm('details')">
+  <app-product-image-overview [currentImagePath]="currentImagePath" [selectedProduct]="selectedProduct"
+    [currentPage]="currentPage" [totalPages]="totalPages" (formClosed)="closeForm('details')">
   </app-product-image-overview>
 </div>
 
 <div class="overlay" *ngIf="isAddProductOpen">
-  <app-product-add 
-    [currentImagePath]="currentImagePath" 
-    [selectedProduct]="selectedProduct" 
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (formSubmitted)="submitForm()"
-    (formClosed)="closeForm('add-product')">
+  <app-product-add [currentImagePath]="currentImagePath" [selectedProduct]="selectedProduct" [currentPage]="currentPage"
+    [totalPages]="totalPages" (formSubmitted)="submitForm()" (formClosed)="closeForm('add-product')">
   </app-product-add>
 </div>

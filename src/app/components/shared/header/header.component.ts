@@ -4,6 +4,7 @@ import {filter} from "rxjs";
 import {AuthService} from "../../../service/user/auth/auth.service";
 import {UserService} from "../../../service/user/user.service";
 import {animate, style, state, trigger, transition} from "@angular/animations";
+import { ShoppingCartService } from 'src/app/service/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit {
   isProductBasketOpened = false;
   
   constructor(private router: Router, private authService: AuthService, private userService: UserService,
-              private elementRef: ElementRef) {
+              private elementRef: ElementRef, private shoppingCartService: ShoppingCartService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  isCartEmpty(){
+    return this.shoppingCartService.isCartEmpty();
   }
 
   isOpened(){

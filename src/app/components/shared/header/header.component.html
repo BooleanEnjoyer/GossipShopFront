@@ -13,8 +13,11 @@
       <div>
         <img src="/assets/V4.png" alt="logo" class="header-logo" (click)="goToDashBoard()"/>
       </div>
-      <div>
+      <div *ngIf="isCartEmpty()">
         <img src="/assets/shoping-cart.svg" alt="shopping cart" class="header-shopping-carts" (click)="openProductBasket()"/>
+      </div>
+      <div *ngIf="!isCartEmpty()">
+        <img src="/assets/ShoppingCartNotEmpty.png" alt="shopping cart" class="header-shopping-carts" (click)="openProductBasket()"/>
       </div>
     </div>
 

@@ -10,9 +10,14 @@
         </div>
       </div>
       <div class="image-holder">
-        <button class="image-button">
+        <div class="image-button" *ngIf="mediaService.isImage(getCurrentImagePath())">
           <img src="{{currentImagePath}}" alt="back" class="product-image"/>
-        </button>
+        </div>
+        <div *ngIf="mediaService.isVideo(getCurrentImagePath())" class="video-holder">
+          <video controls class="video-frame">
+            <source [src]="getCurrentImagePath()" type="video/mp4">
+          </video>
+        </div>
       </div>
       <div class="description">
         Price: {{ selectedProduct.price }} $

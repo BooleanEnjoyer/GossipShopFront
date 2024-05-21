@@ -7,23 +7,26 @@
             <div class="navigation">
                 <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()"
                     class="image-holder">
-                    <button class="image-button">
+                    <div class="image-button" *ngIf="mediaService.isImage(getCurrentImagePath())">
                         <img src="{{this.currentImagePath}}" alt="back" class="product-image" />
-                    </button>
+                    </div>
+                </div>
+                <div *ngIf="mediaService.isVideo(getCurrentImagePath())" class="video-holder">
+                    <video controls class="video-frame">
+                        <source [src]="getCurrentImagePath()" type="video/mp4" style="height: 50vh; width: 100vw;" >
+                    </video>
                 </div>
             </div>
             <div class="down-navigation">
                 <div [class.disabled]="currentPage === 0">
                     <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
-                        <img src="/assets/left-arrow.svg" alt="back"
-                            class="navigation-arrow" />
+                        <img src="/assets/left-arrow.svg" alt="back" class="navigation-arrow" />
                     </button>
                 </div>
                 <div [class.disabled]="currentPage > totalPages - 2">
                     <button class="assets-images" (click)="changePage(currentPage + 1)"
                         [disabled]="currentPage > totalPages - 2">
-                        <img src="\assets\right-arrow.svg" alt="back"
-                            class="navigation-arrow" />
+                        <img src="\assets\right-arrow.svg" alt="back" class="navigation-arrow" />
                     </button>
                 </div>
             </div>

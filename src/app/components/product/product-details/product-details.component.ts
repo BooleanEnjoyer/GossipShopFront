@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/entity/product/product';
 import { generateMusicProducts } from '../product-list/mock-products';
 import { ShoppingCartService } from 'src/app/service/shopping-cart/shopping-cart.service';
+import { MediaService } from 'src/app/service/media/media.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,14 +18,14 @@ export class ProductDetailsComponent implements OnInit {
   selectedProduct = this.mockProducts[0];
   productSpecificationFields: string[] | undefined;
   currentPage = 0;
-  totalPages = 4;
+  totalPages = 5;
   isDetailsFormOpen = false;
   isAddProductOpen = false;
   startX: number = 0;
   threshold: number = 40;
   
   constructor(private router: Router, private route: ActivatedRoute,
-     private shoppingCartService: ShoppingCartService) { }
+     private shoppingCartService: ShoppingCartService, public mediaService: MediaService) { }
 
   ngOnInit(): void {
     this.selectedProduct = this.mockProducts[0];

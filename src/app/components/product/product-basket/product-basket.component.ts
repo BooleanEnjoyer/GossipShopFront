@@ -33,12 +33,15 @@ export class ProductBasketComponent implements OnInit {
   category = '';
   submitImagePath = 'assets/wallet.svg';
   noProductPath = 'assets/Musical_Dashboard_Logo.png'
+  productsPrice = 0;
+
   constructor(private router: Router, private route: ActivatedRoute,
     private logService: LogService, private authService: AuthService,
     private productService: ProductService, private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.displayedProducts = this.shoppingCartService.getCartItems();
+    this.productsPrice = this.calculateSummary();
   }
 
   getProductPath(product: Product) {
@@ -65,6 +68,10 @@ export class ProductBasketComponent implements OnInit {
       }
     };
     this.router.navigate(['/product/category', this.category, product.name], navigationExtras)
+  }
+
+  calculateSummary(){
+      return this.displayedProducts.reduce((sum, product) => sum + product.price, 0);
   }
 
   closeDetailsForm() {
