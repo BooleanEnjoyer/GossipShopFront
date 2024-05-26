@@ -1,0 +1,69 @@
+<div class="content">
+  <div class="searchingContent">
+    <div class="contentAdjust">
+      <div class="sort">
+        <div class="page-item">
+          <button class="assets-images" (click)="openFilter()">
+            <img src="\assets\filter.svg" alt="back" class="iconImage" />
+          </button>
+        </div>
+      </div>
+      <div class="search">
+        <div class="findText">
+          <input type="text" [(ngModel)]="searchTerm" placeholder="Find product" class="searchPlace">
+        </div>
+        <div>
+          <button class="assets-images" (click)="search()">
+            <img src="\assets\magnifing-glass.svg" alt="back" class="iconImage" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <ng-container *ngFor="let product of displayedProducts">
+      <div class="item" (click)="goToProductDetails(product)">
+        <div class="item-content">
+          <div class="img-content">
+            <img [src]="getProductPath(product)" alt="back" class="pico"/>
+          </div>
+          <div class="item-info">
+            <div class="item-base-description">
+              {{ product.name }}
+            </div>
+            <div class="item-base-description">
+              Price: {{ product.price }} $
+            </div>
+            <div class="description">
+              {{ product.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="navigation">
+    <div [class.disabled]="currentPage === 0">
+      <button class="assets-images" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0">
+        <img src="/assets/left-arrow.svg" alt="back" />
+      </button>
+    </div>
+    <div>
+      <button class="assets-images">{{ currentPage + 1 }}</button>
+    </div>
+    <div [class.disabled]="currentPage > totalPages - 2">
+      <button class="assets-images" (click)="changePage(currentPage + 1)" [disabled]="currentPage > totalPages - 2">
+        <img src="\assets\right-arrow.svg" alt="back" />
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isFilterOpened">
+  <app-filter [searchOption]="sortOption" [sortOrder]="sortOrder" (formClosed)="closeFilter()"
+              (formSubmitted)="closeFilter()" (selectedSortOption)="sortOption = $event"
+              (selectedSortOrder)="sortOrder = $event">
+  </app-filter>
+</div>

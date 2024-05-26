@@ -10,6 +10,7 @@ import { ProductImageOverviewComponent } from './product-image-overview/product-
 import { TemplateModule } from '../templates/template.module';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductBasketComponent } from './product-basket/product-basket.component';
+import { UserProductsComponent } from './user-products/user-products.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProductBasketComponent } from './product-basket/product-basket.componen
     ProductImageOverviewComponent,
     ProductAddComponent,
     ProductBasketComponent,
+    UserProductsComponent,
   ],
   imports: [
     CommonModule,

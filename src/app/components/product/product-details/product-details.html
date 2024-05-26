@@ -1,7 +1,7 @@
 <div class="product-details-content">
   <div class="product-buy">
-    <div>
-
+    <div class="base-layout">
+      <app-back-button></app-back-button>
     </div>
     <div class="base-layout">
       <h2>{{selectedProduct.name}}</h2>
@@ -17,13 +17,13 @@
       </button>
     </div>
     <div (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
-      <div class="assets-images" class="image-holder">
-        <div *ngIf="mediaService.isImage(getCurrentImagePath())">
+      <div class="image-holder">
+        <div *ngIf="mediaService.isImage(getCurrentImagePath(currentPage))">
           <img src="{{this.currentImagePath}}" alt="back" class="product-image" (click)="openForm('details')" />
         </div>
-        <div *ngIf="mediaService.isVideo(getCurrentImagePath())" class="video-holder">
+        <div *ngIf="mediaService.isVideo(getCurrentImagePath(currentPage))" class="video-holder">
           <video controls class="video-frame">
-            <source [src]="getCurrentImagePath()" type="video/mp4">
+            <source [src]="getCurrentImagePath(currentPage)" type="video/mp4">
           </video>
         </div>
       </div>

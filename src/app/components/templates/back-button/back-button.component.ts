@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 })
 export class BackButtonComponent implements OnInit {
 
-  imagePath ?: string;
+  imagePath = 'assets/left-arrow.svg';
 
   constructor(private location: Location) { }
 

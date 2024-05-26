@@ -8,14 +8,14 @@ export class AudioService {
 
   private sounds: Howl[] = [];
 
-  constructor() { 
+  constructor() {
     this.loadSounds();
   }
 
   private loadSounds(): void {
     this.sounds.push(new Howl({ src: ['assets/birds_sounds/1.wav'] }));
     this.sounds.push(new Howl({ src: ['assets/birds_sounds/2Crow.mp3'] }));
-    this.sounds.push(new Howl({ src: ['assets/birds_sounds/3Ducs.wav'] }));
+    this.sounds.push(new Howl({ src: ['assets/birds_sounds/3Ducks.wav'] }));
     this.sounds.push(new Howl({ src: ['assets/birds_sounds/4Pigeon.wav'] }));
     this.sounds.push(new Howl({ src: ['assets/birds_sounds/5.wav'] }));
     this.sounds.push(new Howl({ src: ['assets/birds_sounds/6Crow.wav'] }));

@@ -10,28 +10,33 @@ import { MediaService } from 'src/app/service/media/media.service';
   templateUrl: './product-details.html',
   styleUrls: ['./product-details.component.css'],
 })
-export class ProductDetailsComponent implements OnInit { 
+export class ProductDetailsComponent implements OnInit {
 
   @Input() currentImagePath ?: string;
-  senderProducts = 'sendProducts'
-  mockProducts = generateMusicProducts();
-  selectedProduct = this.mockProducts[0];
+  selectedProduct !: Product;
   productSpecificationFields: string[] | undefined;
   currentPage = 0;
-  totalPages = 5;
+  totalPages = 4;
   isDetailsFormOpen = false;
   isAddProductOpen = false;
   startX: number = 0;
   threshold: number = 40;
-  
+
   constructor(private router: Router, private route: ActivatedRoute,
-     private shoppingCartService: ShoppingCartService, public mediaService: MediaService) { }
+     private shoppingCartService: ShoppingCartService, public mediaService: MediaService) {
+    // const navigation = this.router.getCurrentNavigation()?.extras?.state['product'];
+  }
 
   ngOnInit(): void {
-    this.selectedProduct = this.mockProducts[0];
-    this.parseSpecifications(this.selectedProduct.specification);
-    this.currentImagePath = this.getCurrentImagePath();
+    const product = history.state.product;
+    console.log("URL: " + this.router.url)
+    console.log("product: " + product)
+
+    this.selectedProduct = product;
     console.log("Current product: " + this.selectedProduct)
+    this.parseSpecifications(this.selectedProduct.specification);
+    this.currentImagePath = this.getCurrentImagePath(0);
+
     console.log("Current product img path: " + this.selectedProduct.imagesPath)
     console.log("Current img path: " + this.currentImagePath)
   }
@@ -64,10 +69,10 @@ export class ProductDetailsComponent implements OnInit {
     }
     document.body.style.overflowY = 'auto';
   }
-  
+
   changePage(pageIndex: number) {
     this.currentPage = pageIndex;
-    this.currentImagePath = this.getCurrentImagePath();
+    this.currentImagePath = this.getCurrentImagePath(pageIndex);
     console.log("Current img path: " + this.currentImagePath)
   }
 
@@ -105,7 +110,9 @@ export class ProductDetailsComponent implements OnInit {
     return test;
   }
 
-  getCurrentImagePath(){
-    return this.selectedProduct.imagesPath + this.selectedProduct.imagesNames[this.currentPage];
+  getCurrentImagePath(pageIndex : number){
+    const imagePath = `assets/images/${this.selectedProduct.productType}/${this.selectedProduct.name}/${this.selectedProduct.imagesNames[pageIndex]}`;
+    console.log("[getCurrentImagePath] imagePath: " + imagePath)
+    return imagePath;
   }
 }

@@ -65,7 +65,8 @@ export class ProductImageOverviewComponent implements OnInit {
   }
 
   getCurrentImagePath(){
-    return this.selectedProduct.imagesPath + this.selectedProduct.imagesNames[this.currentPage];
+    const imagePath = `assets/images/${this.selectedProduct.productType}/${this.selectedProduct.name}/${this.selectedProduct.imagesNames[this.currentPage]}`;
+    return imagePath;
   }
 
   closeForm() {

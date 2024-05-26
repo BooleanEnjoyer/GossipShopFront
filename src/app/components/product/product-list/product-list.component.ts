@@ -12,13 +12,13 @@ import { generateMusicProducts } from './mock-products';
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent implements OnInit{ 
+export class ProductListComponent implements OnInit{
 
   products: Product[] = [];
-  displayedProducts: Product[] = generateMusicProducts();
+  displayedProducts: Product[] | undefined;
   selectedProduct !: Product;
 
-  itemsPerPage = 4;
+  itemsPerPage = 3;
   currentPage = 0;
   totalPages = 0;
   searchTerm = '';
@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit{
   ngOnInit(): void {
       this.category = this.route.snapshot.paramMap.get('category') || '';
       console.log("CATEGORY: " + this.category)
-      // this.getProducts(this.category);
+      this.getProducts(this.category);
   }
 
   openDetailsForm(product: Product): void {
@@ -66,10 +66,9 @@ export class ProductListComponent implements OnInit{
     this.changePage(0);
   }
 
-  //TODO czemu to jest robione po emailu? nie lepiej zamienić to na id?
   getProducts(category: string) {
-      this.productService.getProducts(this.searchTerm,this.currentPage, this.itemsPerPage,
-      this.sortOption, this.sortOrder, category)
+      this.productService.getProductsByType(category, this.currentPage, this.itemsPerPage,
+      this.sortOption, this.sortOrder)
       .subscribe((response: any) => {
         this.processResponseData(response);
       });
@@ -84,12 +83,7 @@ export class ProductListComponent implements OnInit{
   }
 
   search() {
-    // if(this.logService.isDebugEnabled()){
-    //   console.log(this.sea)
-    // }
-    // if(this.findOption === "Opaaa"){
-    //   this.getProducts(this.category);
-    // }
+    this.getProducts(this.category);
   }
 
   private processResponseData(response: any) {

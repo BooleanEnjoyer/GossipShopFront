@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
             }
             this.authService.setUserStorage(response.token,response.id,response.userEmail);
             this.formSubmitted.emit(this.authRequest);
-            // alert('Pomyślnie zalogowano!')
             this.router.navigateByUrl('/dashboard');
           }
         },

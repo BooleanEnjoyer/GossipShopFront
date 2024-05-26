@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
 
   menuState = 'in';
   isProductBasketOpened = false;
-  
+
   constructor(private router: Router, private authService: AuthService, private userService: UserService,
               private elementRef: ElementRef, private shoppingCartService: ShoppingCartService) {
     this.router.events
@@ -99,8 +99,9 @@ export class HeaderComponent implements OnInit {
   goToDashBoard(){
     this.router.navigateByUrl('/dashboard');
   }
-  
+
   logout(){
+    console.log("Logged out")
     this.userService.logout();
     this.authService.clearUserStorage();
     this.router.navigateByUrl('/dashboard');

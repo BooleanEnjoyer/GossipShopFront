@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="itemBorder">
-      <div class="navItem" routerLink="product/category/Food">
+      <div class="navItem" routerLink="product/category/FOOD">
         <div>
           <button class="buttonsbackgound">Food</button>
         </div>
@@ -21,9 +21,9 @@
       </div>
     </div>
     <div class="itemBorder">
-      <div class="navItem" routerLink="product/category/Music">
+      <div class="navItem" routerLink="product/category/JEWELRY">
         <div>
-          <button routerLink="/dashboard" class="buttonsbackgound">Music</button>
+          <button class="buttonsbackgound">Jewelry</button>
         </div>
         <div>
           <img src="assets/RightArrow.png"  alt="right-arrow" class="navIcon">
@@ -31,9 +31,9 @@
       </div>
     </div>
     <div class="itemBorder">
-      <div class="navItem" routerLink="product/category/Clothes">
+      <div class="navItem" routerLink="product/category/KITCHEN_STUFF">
         <div>
-          <button class="buttonsbackgound">Clothes</button>
+          <button class="buttonsbackgound">Kitchen things</button>
         </div>
         <div>
           <img src="assets/RightArrow.png"  alt="right-arrow" class="navIcon">
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="itemBorder">
-      <div class="navItem" routerLink="product/category/Electronics">
+      <div class="navItem" routerLink="product/category/ELECTRONICS">
         <div>
           <button class="buttonsbackgound">Electronics</button>
         </div>
@@ -50,8 +50,8 @@
         </div>
       </div>
     </div>
-    <div class="itemBorder">
-      <div class="navItem" routerLink="product/user">
+    <div class="itemBorder" *ngIf="isLoggedIn()">
+      <div class="navItem" routerLink="products/user">
         <div>
           <button class="buttonsbackgound">My products</button>
         </div>

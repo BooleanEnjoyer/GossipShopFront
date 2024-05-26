@@ -4,8 +4,8 @@ import { Product } from 'src/app/entity/product/product';
 import { LogService } from 'src/app/service/log/log.service';
 import { ProductService } from 'src/app/service/product/product-service.service';
 import { AuthService } from 'src/app/service/user/auth/auth.service';
-import { generateMusicProducts } from '../product-list/mock-products';
 import { ShoppingCartService } from 'src/app/service/shopping-cart/shopping-cart.service';
+import {BuyRequest} from "../../../entity/product/request/buy-request";
 
 @Component({
   selector: 'app-product-basket',
@@ -32,6 +32,7 @@ export class ProductBasketComponent implements OnInit {
   productNumber = 0;
   category = '';
   submitImagePath = 'assets/wallet.svg';
+  clearCartImagePath = 'assets/brush-icon.svg'
   noProductPath = 'assets/Musical_Dashboard_Logo.png'
   productsPrice = 0;
 
@@ -53,7 +54,13 @@ export class ProductBasketComponent implements OnInit {
   }
 
   isProductBasketEmpty(){
-    return this.displayedProducts.length === 0;
+    return this.shoppingCartService.isCartEmpty();
+  }
+
+  clearProductBasket(){
+    this.shoppingCartService.clearCart();
+    this.displayedProducts = [];
+    this.productsPrice = this.calculateSummary();
   }
 
   openDetailsForm(product: Product): void {
@@ -102,7 +109,30 @@ export class ProductBasketComponent implements OnInit {
   }
 
   submitForm() {
-    this.formSubmitted.emit();
+    if(this.authService.isLoggedIn() && !this.shoppingCartService.isCartEmpty()){
+      const userId = this.authService.getUserId();
+      console.log("[submitForm] userId: " + userId)
+      const productsIds = this.displayedProducts.map(product => product.id);
+      console.log("[submitForm] productsIds: " + productsIds)
+      const buyRequest = new BuyRequest(userId, productsIds);
+      this.productService.buyProduct(buyRequest).subscribe(
+        (response) => {
+          if(this.logService.isDebugEnabled()){
+            console.log(`Product bought response: ${response}`);
+          }
+          this.clearProductBasket();
+          this.formSubmitted.emit();
+        },
+        (error) => {
+          console.error('Error during buying', error);
+        },
+        () => {
+          alert('Buying finished')
+        }
+      );
+    } else {
+      alert("You must be logged in to buy products and cart shouldn't be empty!");
+    }
   }
 
   closeForm() {
