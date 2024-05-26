@@ -86,12 +86,8 @@ export class UserProductsComponent implements OnInit {
   }
 
   search() {
-    // if(this.logService.isDebugEnabled()){
-    //   console.log(this.sea)
-    // }
-    // if(this.findOption === "Opaaa"){
-    //   this.getProducts(this.category);
-    // }
+    const userId = this.authService.getUserId();
+    this.getProducts(userId);
   }
 
   private processResponseData(response: any) {
